@@ -1,20 +1,54 @@
+* {
+	box-sizing: border-box;
+}
 .application {
 	display: flex;
 	justify-content: space-between;
 }
-#car-1 {
-	position: absolute;
-	background:#6495c4;
-	width:30px;
-	height:30px;
-	left: 70px;
-	top: 40px;
-	border: 3px solid #fff;
+.btn_start, .btn_stop {
+    width: 140px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: black;
+    border: 2px solid  #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
 	cursor: pointer;
-	    border-radius: 19px;
-	   -webkit-border-radius: 19px;
-	   -moz-border-radius: 19px;
-
+}
+#bike_img {
+	width:48px;
+	height:48px;
+}
+#truck_img {
+	width:48px;
+	height:48px;
+}
+#car_img {
+	width:48px;
+	height:22px;
+}
+.car, .bike, .truck {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	cursor: pointer;
+}
+.car {
+	background:url(img/svg/car-dodger.svg) no-repeat;
+	width:48px;
+	height:22px;
+}
+.bike {
+	background:url(img/svg/free-icon-motorbike-2107224.svg) no-repeat;
+	width:48px;
+	height:48px;
+}
+.truck {
+	background:url(img/svg/van_106619.svg) no-repeat;
+	width:48px;
+	height:48px;
 }
 #round {
 /* 	display: none; */
