@@ -1,52 +1,27 @@
+import config from '../config.js';
+import {Vehicle, Car, Truck, Bike} from './Vehicle.js';
+/* import './Circle.js'; */
+
+//наполнение массива данными о тс из конфиг-файла
+let list =JSON.parse(JSON.stringify(config));
+
+let vehicles =[];
+for (let i=0;i<list['vehicles']['cars'].length;i++) {
+  let car = list['vehicles']['cars']
+  vehicles.push(new Car(car[i].name,car[i].speed, car[i].tireFlatProbability, car[i].numOfPeople));
+}
+for (let i=0;i<list['vehicles']['trucks'].length;i++) {
+  let truck = list['vehicles']['trucks']
+  vehicles.push(new Truck(truck[i].name, truck[i].speed, truck[i].tireFlatProbability, truck[i].cargoWeight));
+}
+for (let i=0;i<list['vehicles']['bikes'].length;i++) {
+  let bike = list['vehicles']['bikes']
+  vehicles.push(new Bike(bike[i].name, bike[i].speed, bike[i].tireFlatProbability, bike[i].hasSidecar));
+}
+
 let starButton = document.querySelector("#start");
-let stopButton = document.querySelector("#stop");
-
-let car_1 = document.querySelector("#car-1");
-let car_2 = document.querySelector("#bike-1");
-let car_3 = document.querySelector("#truck-1");
-
-let radius = 250;// радиус окружности
-let currentAngle = Math.PI/2;//текущий угол в радианах
-let currentAngle2 = Math.PI;//текущий угол в радианах
-let currentAngle3 = 3*Math.PI/2;//текущий угол в радианах
-
-let baseX = 250; // x координата центра окружности
-let baseY = 250; // y координата центра окружности
-
-car_1.style.top =  `calc((${baseY}px + ${radius * Math.sin(currentAngle)}px) - ${car_1.offsetHeight}px)`; // меняем координаты элемента. В данном случае используется полярная система координат, изменяя угол, меняем положение объекта
-car_1.style.left = `calc((${baseX}px + ${radius * Math.cos(currentAngle)}px) - ${car_1.offsetWidth/2}px)`;
-
-car_2.style.top = `calc((${baseY}px + ${radius * Math.sin(currentAngle2)}px) - ${car_2.offsetHeight}px)`; 
-car_2.style.left = `calc((${baseX}px + ${radius * Math.cos(currentAngle2)}px) - ${car_2.offsetWidth/2}px)`;
-
-car_3.style.top = `calc((${baseY}px + ${radius * Math.sin(currentAngle3)}px) - ${car_3.offsetHeight}px)`; 
-car_3.style.left = `calc((${baseX}px + ${radius * Math.cos(currentAngle3)}px) - ${car_3.offsetWidth/2}px)`;
-
+//Запуск всех авто
 starButton.addEventListener('click', () => {
-    function move() {
-
-    car_1.style.top = `calc((${baseY}px + ${radius * Math.sin(currentAngle)}px) - ${car_1.offsetHeight}px)`; 
-		car_1.style.left = `calc((${baseX}px + ${radius * Math.cos(currentAngle)}px) - ${car_1.offsetWidth/2}px)`;
-    
-    car_2.style.top = `calc((${baseY}px + ${radius * Math.sin(currentAngle2)}px) - ${car_2.offsetHeight}px)`; 
-		car_2.style.left = `calc((${baseX}px + ${radius * Math.cos(currentAngle2)}px) - ${car_2.offsetWidth/2}px)`;
-    
-    car_3.style.top = `calc((${baseY}px + ${radius * Math.sin(currentAngle3)}px) - ${car_3.offsetHeight}px)`; 
-		car_3.style.left = `calc((${baseX}px + ${radius * Math.cos(currentAngle3)}px) - ${car_3.offsetWidth/2}px)`;
-
-    currentAngle += 0.03;
-    currentAngle2 += 0.01;
-    currentAngle3 += 0.02;
-
-    id = requestAnimationFrame(move);
-    }
-    
-    requestAnimationFrame(move);
-/*     starButton.disabled = true;
-    stopButton.disabled = false; */
-});
-
-stopButton.addEventListener('click', () => {
-  cancelAnimationFrame(id);
-/*   starButton.disabled = false; */
+  for (let i=0;i<vehicles.length;i++)
+    requestAnimationFrame(vehicles[i].move.bind(vehicles[i]));//Привязывание контекста вызова к объектам
 });
