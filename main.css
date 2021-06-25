@@ -35,6 +35,10 @@
 	left: 50%;
 	cursor: pointer;
 }
+.crush {
+	display: none;
+	color: red;
+}
 .results__list, .vehicles__list {
 	list-style-type:decimal;
 }

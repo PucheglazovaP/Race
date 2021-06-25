@@ -11,25 +11,22 @@
     </head>
     <body>
         <section class="application">
+            <div class="info">
             <section class="results">
-                <h2 class="results__title">Результат</h2>
+                <h2 class="results__title">Таблица первенства</h2>
                 <ul class="results__list">
-                    <li class="results__item">Машина-1</li>
-                    <li class="results__item">Машина-3</li>
-                    <li class="results__item">Машина-2</li>
                 </ul>
             </section>
-            <button id="start" class="btn_start">Старт</button>
-        <div id="round" class="round">
+            <section class="vehicles">
+                <h2 class="vehicles__title">Список транспортных средств</h2>
+                <ul class="vehicles__list">
+                </ul>
+             </section>
+             <input type="hidden" id="count_f" value="0"/>
+            </div>
+        <div class="round">
          </div>
-         <section class="vehicles">
-            <h2 class="vehicles__title">Список транспортных средств</h2>
-            <ul class="vehicles__list">
-                <li class="vehicles__item">Машина-1</li>
-                <li class="vehicles__item">Машина-2</li>
-                <li class="vehicles__item">Машина-3</li>
-            </ul>
-         </section>
+         <button id="start" class="btn_start">Старт</button>
         </section>
         <script src="config.js" type="module"></script>
         <script src="js/Vehicle.js" type="module"></script>
